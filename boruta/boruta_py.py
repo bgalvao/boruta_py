@@ -400,7 +400,7 @@ class BorutaPy(BaseEstimator, TransformerMixin):
         return self
 
     def get_support(self):
-        return support_
+        return self.support_
 
     def _transform(self, X, weak=False, return_df=False):
         # sanity check
