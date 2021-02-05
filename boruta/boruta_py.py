@@ -399,6 +399,9 @@ class BorutaPy(BaseEstimator, TransformerMixin):
             self._print_results(dec_reg, _iter, 1)
         return self
 
+    def get_support(self):
+        return support_
+
     def _transform(self, X, weak=False, return_df=False):
         # sanity check
         try:
@@ -603,7 +606,7 @@ class BorutaPy(BaseEstimator, TransformerMixin):
 
     def _select_n_features(self, n_features_to_select, importance_history_):
         # fetch faeture importances of last trained ensemble
-        # -1 -encoded features were already rejected
+        # [-1]-encoded features were already rejected
         feature_importance = np.nan_to_num(importance_history_[-1], nan=-1.)
         selected_features = feature_importance.argsort()[-n_features_to_select:]
 
